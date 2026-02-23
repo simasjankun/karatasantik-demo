@@ -152,6 +152,141 @@ foreach ( $pages as $page_title ) {
 }
 
 // ─────────────────────────────────────────────
+// 3. Navigation Menu
+// ─────────────────────────────────────────────
+
+WP_CLI::line( '── Navigation Menu ────────────────────' );
+WP_CLI::line( '' );
+
+$menu_name     = 'Pagrindinis meniu';
+$menu_location = 'primary';
+
+$existing_menu = wp_get_nav_menu_object( $menu_name );
+
+if ( $existing_menu ) {
+
+	WP_CLI::line( "  [skip]    Menu \"{$menu_name}\" already exists (ID: {$existing_menu->term_id})" );
+
+} else {
+
+	$menu_id = wp_create_nav_menu( $menu_name );
+
+	if ( is_wp_error( $menu_id ) ) {
+
+		WP_CLI::warning( "  [error]   Could not create menu \"{$menu_name}\" — " . $menu_id->get_error_message() );
+
+	} else {
+
+		WP_CLI::success( "  [created] Menu \"{$menu_name}\" (ID: {$menu_id})" );
+		WP_CLI::line( '' );
+
+		// ── Helper: add a taxonomy (product_cat) menu item ────────────
+
+		$add_term_item = function( $term_name, $parent_item_id = 0 ) use ( $menu_id ) {
+			$term = get_term_by( 'name', $term_name, 'product_cat' );
+
+			if ( ! $term ) {
+				WP_CLI::warning( "    [error]   Term not found: \"{$term_name}\"" );
+				return 0;
+			}
+
+			$item_id = wp_update_nav_menu_item( $menu_id, 0, [
+				'menu-item-title'     => $term->name,
+				'menu-item-object'    => 'product_cat',
+				'menu-item-object-id' => $term->term_id,
+				'menu-item-type'      => 'taxonomy',
+				'menu-item-parent-id' => $parent_item_id,
+				'menu-item-status'    => 'publish',
+			] );
+
+			if ( is_wp_error( $item_id ) ) {
+				WP_CLI::warning( "    [error]   \"{$term_name}\" — " . $item_id->get_error_message() );
+				return 0;
+			}
+
+			$indent = $parent_item_id ? '    ' : '  ';
+			WP_CLI::success( "{$indent}[menu item] {$term->name} (item ID: {$item_id})" );
+			return $item_id;
+		};
+
+		// ── Helper: add a page menu item ──────────────────────────────
+
+		$add_page_item = function( $page_title ) use ( $menu_id ) {
+			$results = get_posts( [
+				'post_type'      => 'page',
+				'title'          => $page_title,
+				'post_status'    => 'publish',
+				'posts_per_page' => 1,
+			] );
+
+			if ( empty( $results ) ) {
+				WP_CLI::warning( "  [error]   Page not found: \"{$page_title}\"" );
+				return 0;
+			}
+
+			$page    = $results[0];
+			$item_id = wp_update_nav_menu_item( $menu_id, 0, [
+				'menu-item-title'     => $page->post_title,
+				'menu-item-object'    => 'page',
+				'menu-item-object-id' => $page->ID,
+				'menu-item-type'      => 'post_type',
+				'menu-item-parent-id' => 0,
+				'menu-item-status'    => 'publish',
+			] );
+
+			if ( is_wp_error( $item_id ) ) {
+				WP_CLI::warning( "  [error]   \"{$page_title}\" — " . $item_id->get_error_message() );
+				return 0;
+			}
+
+			WP_CLI::success( "  [menu item] \"{$page->post_title}\" (item ID: {$item_id})" );
+			return $item_id;
+		};
+
+		// ── Juvelyrika ────────────────────────────────────────────────
+
+		$juvelyrika_id = $add_term_item( 'Juvelyrika' );
+		if ( $juvelyrika_id ) {
+			$add_term_item( 'Auksiniai žiedai',          $juvelyrika_id );
+			$add_term_item( 'Sužadėtuvių žiedai',        $juvelyrika_id );
+			$add_term_item( 'Auksiniai auskarai',         $juvelyrika_id );
+			$add_term_item( 'Auksinės sagės',             $juvelyrika_id );
+			$add_term_item( 'Grandinėlės ir pakabukai',  $juvelyrika_id );
+			$add_term_item( 'Sidabriniai dirbiniai',      $juvelyrika_id );
+		}
+
+		WP_CLI::line( '' );
+
+		// ── Antikvariatas ─────────────────────────────────────────────
+
+		$antikvariatas_id = $add_term_item( 'Antikvariatas' );
+		if ( $antikvariatas_id ) {
+			$add_term_item( 'Antikvariniai laikrodžiai',             $antikvariatas_id );
+			$add_term_item( 'Sidabriniai indai ir stalo įrankiai',   $antikvariatas_id );
+			$add_term_item( 'Veidrodžiai ir rėmai',                  $antikvariatas_id );
+		}
+
+		WP_CLI::line( '' );
+
+		// ── Pages ─────────────────────────────────────────────────────
+
+		$add_page_item( 'Akcijos ir nuolaidos' );
+		$add_page_item( 'Dovanų kuponai' );
+		$add_page_item( 'Apie mus' );
+		$add_page_item( 'Kontaktai' );
+
+		WP_CLI::line( '' );
+
+		// ── Assign to theme location ──────────────────────────────────
+
+		$locations                = get_theme_mod( 'nav_menu_locations', [] );
+		$locations[ $menu_location ] = $menu_id;
+		set_theme_mod( 'nav_menu_locations', $locations );
+		WP_CLI::success( "  [assigned] Menu assigned to location \"{$menu_location}\"" );
+	}
+}
+
+// ─────────────────────────────────────────────
 // Footer
 // ─────────────────────────────────────────────
 

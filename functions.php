@@ -47,7 +47,7 @@ function karatasantik_setup() {
 
 	// Register navigation menus
 	register_nav_menus( [
-		'primary' => __( 'Primary Navigation', 'karatasantik' ),
+		'primary' => __( 'Pagrindinis meniu', 'karatasantik' ),
 	] );
 
 	// Make theme text translatable
@@ -88,3 +88,9 @@ function karatasantik_enqueue_assets() {
 	// );
 }
 add_action( 'wp_enqueue_scripts', 'karatasantik_enqueue_assets' );
+
+// ─────────────────────────────────────────────
+// Includes
+// ─────────────────────────────────────────────
+
+require get_template_directory() . '/inc/theme-options.php';
