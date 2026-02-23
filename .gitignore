@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build output
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Environment / secrets
+.env
+.env.local
+*.log
+
+# WordPress auto-generated
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+
+# Composer
+composer.lock
+
+# Package managers
+package-lock.json
+yarn.lock
