@@ -62,6 +62,25 @@ git clone https://github.com/simasjankun/karatasantik-demo.git \
 
 ---
 
+## Demo Data Setup
+
+A WP-CLI script is included to populate the site with initial demo content in one command:
+
+```bash
+wp eval-file setup-data.php
+```
+
+The script is idempotent — safe to re-run, it skips anything that already exists.
+
+**Creates:**
+
+- WooCommerce product categories:
+  - **Juvelyrika** → Auksiniai žiedai, Sužadėtuvių žiedai, Auksiniai auskarai, Auksinės sagės, Grandinėlės ir pakabukai, Sidabriniai dirbiniai
+  - **Antikvariatas** → Antikvariniai laikrodžiai, Sidabriniai indai ir stalo įrankiai, Veidrodžiai ir rėmai
+- WordPress pages: Apie mus, Kontaktai, Dovanų kuponai, Akcijos ir nuolaidos
+
+---
+
 ## Project Structure
 
 ```
@@ -72,6 +91,7 @@ karatasantik-demo/
 ├── front-page.php     # Homepage template
 ├── header.php         # Site header & navigation
 ├── footer.php         # Site footer
+├── setup-data.php     # WP-CLI demo data setup script
 ├── .gitignore
 └── README.md
 ```
