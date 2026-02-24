@@ -79,6 +79,11 @@
     "stat3": { "number": "500+", "label": "Unique pieces" },
     "cta": "Learn more"
   },
+  "Testimonials": {
+    "label": "TESTIMONIALS",
+    "heading": "What our clients say",
+    "leaveReview": "Leave a review"
+  },
   "Header": {
     "tagline": "Fine jewellery since 1995",
     "search": "Search",

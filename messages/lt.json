@@ -79,6 +79,11 @@
     "stat3": { "number": "500+", "label": "Unikalių dirbinių" },
     "cta": "Sužinoti daugiau"
   },
+  "Testimonials": {
+    "label": "ATSILIEPIMAI",
+    "heading": "Ką sako mūsų klientai",
+    "leaveReview": "Palikti atsiliepimą"
+  },
   "Header": {
     "tagline": "Juvelyriniai dirbiniai nuo 1995",
     "search": "Paieška",

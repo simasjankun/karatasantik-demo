@@ -3,6 +3,7 @@ import HeroSection from '@/components/HeroSection';
 import CategoriesSection from '@/components/CategoriesSection';
 import AboutSection from '@/components/AboutSection';
 import FeaturedProducts from '@/components/FeaturedProducts';
+import TestimonialsSection from '@/components/TestimonialsSection';
 
 export default async function HomePage({
   params,
@@ -18,6 +19,7 @@ export default async function HomePage({
       <CategoriesSection />
       <AboutSection />
       <FeaturedProducts />
+      <TestimonialsSection />
     </main>
   );
 }
