@@ -11,6 +11,11 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        gold: "#C6A55C",
+      },
+      fontFamily: {
+        playfair: ["var(--font-playfair)", "serif"],
+        inter: ["var(--font-inter)", "sans-serif"],
       },
     },
   },
