@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
+import { Link, useRouter, usePathname } from '@/i18n/navigation';
 import { navigation } from '@/data/navigation';
 import { contact } from '@/data/contact';
 
@@ -108,6 +109,12 @@ export default function Header() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const dropdownTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const tNav = useTranslations('Navigation');
+  const tHeader = useTranslations('Header');
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+
   // Shrink on scroll
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -146,8 +153,13 @@ export default function Header() {
   const toggleAccordion = (href: string) =>
     setOpenAccordion(prev => (prev === href ? null : href));
 
-  const juvelyrikaItem = navigation.find(item => item.label === 'Juvelyrika');
-  const antikvariatasItem = navigation.find(item => item.label === 'Antikvariatas');
+  const switchLocale = (next: string) => {
+    if (next === locale) return;
+    router.replace(pathname, { locale: next });
+  };
+
+  const juvelyrikaItem = navigation.find(item => item.href === '/juvelyrika');
+  const antikvariatasItem = navigation.find(item => item.href === '/antikvariatas');
 
   return (
     <>
@@ -192,9 +204,23 @@ export default function Header() {
               </a>
             </div>
             <div className="flex items-center text-[11px] tracking-[0.18em] uppercase text-white/35">
-              <button className="px-1.5 py-0.5 text-white/65 hover:text-gold transition-colors duration-300">LT</button>
+              <button
+                onClick={() => switchLocale('lt')}
+                className={`px-1.5 py-0.5 hover:text-gold transition-colors duration-300 ${
+                  locale === 'lt' ? 'text-white/65' : ''
+                }`}
+              >
+                LT
+              </button>
               <span aria-hidden="true" className="text-white/20 mx-0.5">|</span>
-              <button className="px-1.5 py-0.5 hover:text-gold transition-colors duration-300">EN</button>
+              <button
+                onClick={() => switchLocale('en')}
+                className={`px-1.5 py-0.5 hover:text-gold transition-colors duration-300 ${
+                  locale === 'en' ? 'text-white/65' : ''
+                }`}
+              >
+                EN
+              </button>
             </div>
           </div>
         </div>
@@ -209,7 +235,7 @@ export default function Header() {
               {/* Hamburger — gold thin lines */}
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                aria-label={mobileOpen ? 'Uždaryti meniu' : 'Atidaryti meniu'}
+                aria-label={tHeader(mobileOpen ? 'closeMenu' : 'openMenu')}
                 aria-expanded={mobileOpen}
                 aria-controls="mobile-menu"
                 className="justify-self-start flex flex-col justify-center gap-[5px] w-8 h-7"
@@ -235,7 +261,7 @@ export default function Header() {
 
               {/* Cart */}
               <button
-                aria-label="Krepšelis, 0 prekių"
+                aria-label={tHeader('cartLabel')}
                 className="justify-self-end relative text-white/40 hover:text-gold transition-colors duration-300"
               >
                 <CartIcon />
@@ -266,21 +292,21 @@ export default function Header() {
                     scrolled ? 'max-h-0 opacity-0 mt-0' : 'max-h-6 opacity-100 mt-[7px]'
                   }`}
                 >
-                  Juvelyriniai dirbiniai nuo 1995
+                  {tHeader('tagline')}
                 </p>
               </div>
 
               {/* Icons */}
-              <div className="flex items-center gap-7" role="toolbar" aria-label="Veiksmai">
-                <button aria-label="Paieška"
+              <div className="flex items-center gap-7" role="toolbar" aria-label={tHeader('actionsToolbar')}>
+                <button aria-label={tHeader('search')}
                   className="text-white/35 hover:text-gold transition-colors duration-300">
                   <SearchIcon />
                 </button>
-                <button aria-label="Mano paskyra"
+                <button aria-label={tHeader('account')}
                   className="text-white/35 hover:text-gold transition-colors duration-300">
                   <UserIcon />
                 </button>
-                <button aria-label="Krepšelis, 0 prekių"
+                <button aria-label={tHeader('cartLabel')}
                   className="relative text-white/35 hover:text-gold transition-colors duration-300">
                   <CartIcon />
                   <span aria-hidden="true"
@@ -300,7 +326,7 @@ export default function Header() {
         {/* ── Desktop Navigation ───────────────────────────────────── */}
         <nav
           className="relative hidden md:block bg-[#141414]"
-          aria-label="Pagrindinis meniu"
+          aria-label={tHeader('mainNav')}
           onMouseLeave={closeDropdown}
         >
           <div className="container mx-auto px-8 xl:px-14">
@@ -309,27 +335,27 @@ export default function Header() {
                 <li
                   key={item.href}
                   role="none"
-                  className={item.label === 'Antikvariatas' ? 'relative' : ''}
+                  className={item.href === '/antikvariatas' ? 'relative' : ''}
                   onMouseEnter={() =>
-                    item.children ? openDropdown(item.label) : clearDropdown()
+                    item.children ? openDropdown(item.href) : clearDropdown()
                   }
                 >
                   <Link
                     href={item.href}
                     role="menuitem"
                     aria-haspopup={item.children ? 'true' : undefined}
-                    aria-expanded={item.children ? activeDropdown === item.label : undefined}
+                    aria-expanded={item.children ? activeDropdown === item.href : undefined}
                     className={`relative flex items-center gap-1.5 px-5 py-[14px] text-[11.5px] uppercase tracking-[0.2em] font-inter font-medium transition-colors duration-300 ${
-                      activeDropdown === item.label
+                      activeDropdown === item.href
                         ? 'text-gold'
                         : 'text-white/45 hover:text-white/80'
                     }`}
                   >
-                    {item.label}
+                    {tNav(item.labelKey)}
                     {item.children && (
                       <ChevronDownIcon
                         className={`transition-transform duration-300 ${
-                          activeDropdown === item.label ? 'rotate-180' : ''
+                          activeDropdown === item.href ? 'rotate-180' : ''
                         }`}
                       />
                     )}
@@ -337,19 +363,19 @@ export default function Header() {
                     <span
                       aria-hidden="true"
                       className={`absolute bottom-0 left-5 right-5 h-px bg-gold transition-opacity duration-300 ${
-                        activeDropdown === item.label ? 'opacity-100' : 'opacity-0'
+                        activeDropdown === item.href ? 'opacity-100' : 'opacity-0'
                       }`}
                     />
                   </Link>
 
                   {/* ── Antikvariatas — narrow dropdown (inside <li>) ─── */}
-                  {item.label === 'Antikvariatas' && antikvariatasItem?.children && (
+                  {item.href === '/antikvariatas' && antikvariatasItem?.children && (
                     <div
                       className="absolute left-0 top-full z-20 w-[280px]"
-                      onMouseEnter={() => openDropdown('Antikvariatas')}
+                      onMouseEnter={() => openDropdown('/antikvariatas')}
                       onMouseLeave={closeDropdown}
                     >
-                      <div className={`dropdown-grid-wrapper ${activeDropdown === 'Antikvariatas' ? 'is-open' : ''}`}>
+                      <div className={`dropdown-grid-wrapper ${activeDropdown === '/antikvariatas' ? 'is-open' : ''}`}>
                         <div className="dropdown-grid-inner">
                           {/* Top gold line */}
                           <div aria-hidden="true"
@@ -372,7 +398,7 @@ export default function Header() {
                             {/* Content */}
                             <div className="relative py-6 px-2">
                               <p className="px-5 mb-4 text-[9.5px] tracking-[0.28em] uppercase text-gold/35 font-inter">
-                                Antikvariatas
+                                {tNav('antikvariatas')}
                               </p>
                               <ul role="none">
                                 {antikvariatasItem.children.map((child, idx) => (
@@ -381,10 +407,10 @@ export default function Header() {
                                       href={child.href}
                                       role="menuitem"
                                       style={{
-                                        animation: activeDropdown === 'Antikvariatas'
+                                        animation: activeDropdown === '/antikvariatas'
                                           ? `dropdownItemIn 0.3s ease both`
                                           : 'none',
-                                        animationDelay: activeDropdown === 'Antikvariatas'
+                                        animationDelay: activeDropdown === '/antikvariatas'
                                           ? `${140 + idx * 45}ms`
                                           : '0ms',
                                       }}
@@ -394,7 +420,7 @@ export default function Header() {
                                         —
                                       </span>
                                       <span className="transition-transform duration-200 group-hover/item:translate-x-0.5">
-                                        {child.label}
+                                        {tNav(child.labelKey)}
                                       </span>
                                     </Link>
                                   </li>
@@ -419,10 +445,10 @@ export default function Header() {
           {/* Positioned absolute left-0 right-0 relative to <nav> (which is full-width in fixed header) */}
           <div
             className="absolute left-0 right-0 top-full z-20"
-            onMouseEnter={() => openDropdown('Juvelyrika')}
+            onMouseEnter={() => openDropdown('/juvelyrika')}
             onMouseLeave={closeDropdown}
           >
-            <div className={`dropdown-grid-wrapper ${activeDropdown === 'Juvelyrika' ? 'is-open' : ''}`}>
+            <div className={`dropdown-grid-wrapper ${activeDropdown === '/juvelyrika' ? 'is-open' : ''}`}>
               <div className="dropdown-grid-inner">
                 {/* Top gold line */}
                 <div aria-hidden="true"
@@ -456,10 +482,10 @@ export default function Header() {
                   {/* Content */}
                   <div
                     className={`relative container mx-auto px-12 xl:px-16 flex gap-0 transition-opacity duration-300 ${
-                      activeDropdown === 'Juvelyrika' ? 'opacity-100' : 'opacity-0'
+                      activeDropdown === '/juvelyrika' ? 'opacity-100' : 'opacity-0'
                     }`}
                     style={{
-                      transitionDelay: activeDropdown === 'Juvelyrika' ? '80ms' : '0ms',
+                      transitionDelay: activeDropdown === '/juvelyrika' ? '80ms' : '0ms',
                       paddingTop: '2.5rem',
                       paddingBottom: '2.5rem',
                     }}
@@ -467,7 +493,7 @@ export default function Header() {
                     {/* Left — categories (60%) */}
                     <div className="flex-[3] pr-14 border-r border-white/[0.06]">
                       <p className="text-[9.5px] tracking-[0.32em] uppercase text-gold/40 font-inter mb-7">
-                        Kategorijos
+                        {tHeader('categories')}
                       </p>
                       {juvelyrikaItem?.children && (
                         <ul className="grid grid-cols-2 gap-x-10 gap-y-0.5">
@@ -479,11 +505,11 @@ export default function Header() {
                                 role="menuitem"
                                 style={{
                                   animation:
-                                    activeDropdown === 'Juvelyrika'
+                                    activeDropdown === '/juvelyrika'
                                       ? `dropdownItemIn 0.35s ease both`
                                       : 'none',
                                   animationDelay:
-                                    activeDropdown === 'Juvelyrika'
+                                    activeDropdown === '/juvelyrika'
                                       ? `${160 + idx * 40}ms`
                                       : '0ms',
                                 }}
@@ -493,7 +519,7 @@ export default function Header() {
                                   —
                                 </span>
                                 <span className="transition-transform duration-200 group-hover/cat:translate-x-1">
-                                  {child.label}
+                                  {tNav(child.labelKey)}
                                 </span>
                               </Link>
                             </li>
@@ -506,7 +532,7 @@ export default function Header() {
                         onClick={() => setActiveDropdown(null)}
                         className="mt-7 inline-flex items-center gap-2 text-[10.5px] tracking-[0.22em] uppercase text-gold/40 hover:text-gold transition-colors duration-300 border-b border-transparent hover:border-gold/40 pb-px"
                       >
-                        Peržiūrėti visą kolekciją
+                        {tHeader('viewAll')}
                         <span aria-hidden="true" className="text-xs">→</span>
                       </Link>
                     </div>
@@ -514,7 +540,7 @@ export default function Header() {
                     {/* Right — featured image (40%) */}
                     <div className="flex-[2] pl-14 flex flex-col justify-center">
                       <p className="text-[9.5px] tracking-[0.32em] uppercase text-gold/40 font-inter mb-6">
-                        Naujausia kolekcija
+                        {tHeader('newCollection')}
                       </p>
                       {/* Image placeholder with corner frame */}
                       <div className="relative p-2.5">
@@ -526,7 +552,7 @@ export default function Header() {
                         {/* Placeholder */}
                         <div className="w-full aspect-[16/10] bg-[#111111] flex items-center justify-center">
                           <span className="text-[9px] tracking-[0.25em] text-white/12 uppercase font-inter">
-                            Nuotrauka
+                            {tHeader('imagePlaceholder')}
                           </span>
                         </div>
                       </div>
@@ -546,7 +572,7 @@ export default function Header() {
         id="mobile-menu"
         role="dialog"
         aria-modal="true"
-        aria-label="Navigacijos meniu"
+        aria-label={tHeader('mobileMenuDialog')}
         className={`fixed inset-0 z-[60] flex flex-col md:hidden transition-transform duration-[340ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${
           mobileOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
@@ -564,7 +590,7 @@ export default function Header() {
           </Link>
           <button
             onClick={() => setMobileOpen(false)}
-            aria-label="Uždaryti meniu"
+            aria-label={tHeader('closeMenu')}
             className="p-1.5 text-white/30 hover:text-gold transition-colors duration-300"
           >
             <CloseIcon />
@@ -572,7 +598,7 @@ export default function Header() {
         </div>
 
         {/* Nav items — scrollable, stagger in */}
-        <nav className="flex-1 overflow-y-auto px-7 pt-2 pb-4" aria-label="Mobilusis meniu">
+        <nav className="flex-1 overflow-y-auto px-7 pt-2 pb-4" aria-label={tHeader('mobileNav')}>
           <ul>
             {navigation.map((item, index) => (
               <li
@@ -592,7 +618,7 @@ export default function Header() {
                       aria-expanded={openAccordion === item.href}
                       className="flex items-center justify-between w-full py-[18px] text-left font-playfair font-normal text-[1.35rem] uppercase tracking-[0.1em] text-white/60 hover:text-gold transition-colors duration-200"
                     >
-                      <span>{item.label}</span>
+                      <span>{tNav(item.labelKey)}</span>
                       <ChevronDownIcon
                         className={`text-gold/40 transition-transform duration-300 ${
                           openAccordion === item.href ? 'rotate-180' : ''
@@ -612,7 +638,7 @@ export default function Header() {
                                 <span className="text-gold/25 font-light leading-none transition-colors duration-200 group-hover/sub:text-gold/50">
                                   —
                                 </span>
-                                {child.label}
+                                {tNav(child.labelKey)}
                               </Link>
                             </li>
                           ))}
@@ -626,7 +652,7 @@ export default function Header() {
                     onClick={() => setMobileOpen(false)}
                     className="block py-[18px] font-playfair font-normal text-[1.35rem] uppercase tracking-[0.1em] text-white/60 hover:text-gold transition-colors duration-200"
                   >
-                    {item.label}
+                    {tNav(item.labelKey)}
                   </Link>
                 )}
               </li>
@@ -639,21 +665,35 @@ export default function Header() {
 
           {/* Language switcher — centered */}
           <div className="flex items-center justify-center gap-1 text-[10.5px] tracking-[0.2em] uppercase font-inter">
-            <button className="px-2 py-1 text-white/65 hover:text-gold transition-colors duration-300">LT</button>
+            <button
+              onClick={() => switchLocale('lt')}
+              className={`px-2 py-1 hover:text-gold transition-colors duration-300 ${
+                locale === 'lt' ? 'text-white/65' : 'text-white/28'
+              }`}
+            >
+              LT
+            </button>
             <span aria-hidden="true" className="text-white/18">|</span>
-            <button className="px-2 py-1 text-white/28 hover:text-gold transition-colors duration-300">EN</button>
+            <button
+              onClick={() => switchLocale('en')}
+              className={`px-2 py-1 hover:text-gold transition-colors duration-300 ${
+                locale === 'en' ? 'text-white/65' : 'text-white/28'
+              }`}
+            >
+              EN
+            </button>
           </div>
 
           {/* Icon row — search placeholder + account + social, evenly spaced */}
           <div className="flex items-center justify-around">
             <button
-              aria-label="Paieška"
+              aria-label={tHeader('search')}
               className="text-gold/50 hover:text-gold transition-colors duration-300 p-1"
             >
               <SearchIcon />
             </button>
             <button
-              aria-label="Mano paskyra"
+              aria-label={tHeader('account')}
               className="text-gold/50 hover:text-gold transition-colors duration-300 p-1"
             >
               <UserIcon />

@@ -1,0 +1,35 @@
+{
+  "Navigation": {
+    "juvelyrika": "Jewellery",
+    "antikvariatas": "Antiques",
+    "akcijos": "Offers & Discounts",
+    "dovanuKuponai": "Gift Vouchers",
+    "apieMus": "About Us",
+    "kontaktai": "Contact",
+    "auksiniai_ziedai": "Gold Rings",
+    "suzadetuvin_ziedai": "Engagement Rings",
+    "auksiniai_auskarai": "Gold Earrings",
+    "auksiners_sages": "Gold Brooches",
+    "grandineles_ir_pakabukai": "Chains & Pendants",
+    "sidabriniai_dirbiniai": "Silver Jewellery",
+    "antikvariniai_laikrodziai": "Antique Watches",
+    "sidabriniai_indai": "Silver Tableware",
+    "veidroziai_ir_remai": "Mirrors & Frames"
+  },
+  "Header": {
+    "tagline": "Fine jewellery since 1995",
+    "search": "Search",
+    "account": "My account",
+    "cartLabel": "Cart, 0 items",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainNav": "Main navigation",
+    "actionsToolbar": "Actions",
+    "mobileMenuDialog": "Navigation menu",
+    "mobileNav": "Mobile navigation",
+    "categories": "Categories",
+    "newCollection": "New collection",
+    "viewAll": "View full collection",
+    "imagePlaceholder": "Image"
+  }
+}

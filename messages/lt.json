@@ -1,0 +1,35 @@
+{
+  "Navigation": {
+    "juvelyrika": "Juvelyrika",
+    "antikvariatas": "Antikvariatas",
+    "akcijos": "Akcijos ir nuolaidos",
+    "dovanuKuponai": "Dovanų kuponai",
+    "apieMus": "Apie mus",
+    "kontaktai": "Kontaktai",
+    "auksiniai_ziedai": "Auksiniai žiedai",
+    "suzadetuvin_ziedai": "Sužadėtuvių žiedai",
+    "auksiniai_auskarai": "Auksiniai auskarai",
+    "auksiners_sages": "Auksinės sagės",
+    "grandineles_ir_pakabukai": "Grandinėlės ir pakabukai",
+    "sidabriniai_dirbiniai": "Sidabriniai dirbiniai",
+    "antikvariniai_laikrodziai": "Antikvariniai laikrodžiai",
+    "sidabriniai_indai": "Sidabriniai indai ir stalo įrankiai",
+    "veidroziai_ir_remai": "Veidrodžiai ir rėmai"
+  },
+  "Header": {
+    "tagline": "Juvelyriniai dirbiniai nuo 1995",
+    "search": "Paieška",
+    "account": "Mano paskyra",
+    "cartLabel": "Krepšelis, 0 prekių",
+    "openMenu": "Atidaryti meniu",
+    "closeMenu": "Uždaryti meniu",
+    "mainNav": "Pagrindinis meniu",
+    "actionsToolbar": "Veiksmai",
+    "mobileMenuDialog": "Navigacijos meniu",
+    "mobileNav": "Mobilusis meniu",
+    "categories": "Kategorijos",
+    "newCollection": "Naujausia kolekcija",
+    "viewAll": "Peržiūrėti visą kolekciją",
+    "imagePlaceholder": "Nuotrauka"
+  }
+}

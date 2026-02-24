@@ -1,38 +1,38 @@
 export type NavChild = {
-  label: string;
+  labelKey: string;
   href: string;
 };
 
 export type NavItem = {
-  label: string;
+  labelKey: string;
   href: string;
   children?: NavChild[];
 };
 
 export const navigation: NavItem[] = [
   {
-    label: 'Juvelyrika',
+    labelKey: 'juvelyrika',
     href: '/juvelyrika',
     children: [
-      { label: 'Auksiniai žiedai', href: '/juvelyrika/auksiniai-ziedai' },
-      { label: 'Sužadėtuvių žiedai', href: '/juvelyrika/suzadetuvin-ziedai' },
-      { label: 'Auksiniai auskarai', href: '/juvelyrika/auksiniai-auskarai' },
-      { label: 'Auksinės sagės', href: '/juvelyrika/auksiners-sages' },
-      { label: 'Grandinėlės ir pakabukai', href: '/juvelyrika/grandineles-ir-pakabukai' },
-      { label: 'Sidabriniai dirbiniai', href: '/juvelyrika/sidabriniai-dirbiniai' },
+      { labelKey: 'auksiniai_ziedai', href: '/juvelyrika/auksiniai-ziedai' },
+      { labelKey: 'suzadetuvin_ziedai', href: '/juvelyrika/suzadetuvin-ziedai' },
+      { labelKey: 'auksiniai_auskarai', href: '/juvelyrika/auksiniai-auskarai' },
+      { labelKey: 'auksiners_sages', href: '/juvelyrika/auksiners-sages' },
+      { labelKey: 'grandineles_ir_pakabukai', href: '/juvelyrika/grandineles-ir-pakabukai' },
+      { labelKey: 'sidabriniai_dirbiniai', href: '/juvelyrika/sidabriniai-dirbiniai' },
     ],
   },
   {
-    label: 'Antikvariatas',
+    labelKey: 'antikvariatas',
     href: '/antikvariatas',
     children: [
-      { label: 'Antikvariniai laikrodžiai', href: '/antikvariatas/antikvariniai-laikrodziai' },
-      { label: 'Sidabriniai indai ir stalo įrankiai', href: '/antikvariatas/sidabriniai-indai' },
-      { label: 'Veidrodžiai ir rėmai', href: '/antikvariatas/veidrodžiai-ir-remai' },
+      { labelKey: 'antikvariniai_laikrodziai', href: '/antikvariatas/antikvariniai-laikrodziai' },
+      { labelKey: 'sidabriniai_indai', href: '/antikvariatas/sidabriniai-indai' },
+      { labelKey: 'veidroziai_ir_remai', href: '/antikvariatas/veidroziai-ir-remai' },
     ],
   },
-  { label: 'Akcijos ir nuolaidos', href: '/akcijos' },
-  { label: 'Dovanų kuponai', href: '/dovanu-kuponai' },
-  { label: 'Apie mus', href: '/apie-mus' },
-  { label: 'Kontaktai', href: '/kontaktai' },
+  { labelKey: 'akcijos', href: '/akcijos' },
+  { labelKey: 'dovanuKuponai', href: '/dovanu-kuponai' },
+  { labelKey: 'apieMus', href: '/apie-mus' },
+  { labelKey: 'kontaktai', href: '/kontaktai' },
 ];
