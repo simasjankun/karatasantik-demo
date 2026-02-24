@@ -16,6 +16,23 @@
     "sidabriniai_indai": "Silver Tableware",
     "veidroziai_ir_remai": "Mirrors & Frames"
   },
+  "Categories": {
+    "label": "OUR COLLECTIONS",
+    "heading": "Discover an exceptional world",
+    "jewellery": {
+      "label": "Jewellery",
+      "title": "Fine Gold Jewellery"
+    },
+    "antiques": {
+      "label": "Antiques",
+      "title": "Antique Pieces"
+    },
+    "offers": {
+      "label": "Offers",
+      "title": "Special Offers"
+    },
+    "viewCollection": "View collection"
+  },
   "Hero": {
     "label": "Jewellery & Antiques",
     "heading": "Exceptional jewellery since 1995",

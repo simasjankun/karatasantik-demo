@@ -16,6 +16,23 @@
     "sidabriniai_indai": "Sidabriniai indai ir stalo įrankiai",
     "veidroziai_ir_remai": "Veidrodžiai ir rėmai"
   },
+  "Categories": {
+    "label": "MŪSŲ KOLEKCIJOS",
+    "heading": "Atraskite išskirtinį pasaulį",
+    "jewellery": {
+      "label": "Juvelyrika",
+      "title": "Auksiniai papuošalai"
+    },
+    "antiques": {
+      "label": "Antikvariatas",
+      "title": "Antikvariniai dirbiniai"
+    },
+    "offers": {
+      "label": "Akcijos",
+      "title": "Išskirtiniai pasiūlymai"
+    },
+    "viewCollection": "Žiūrėti kolekciją"
+  },
   "Hero": {
     "label": "Juvelyrika ir antikvariatas",
     "heading": "Išskirtiniai papuošalai nuo 1995 metų",
