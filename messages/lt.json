@@ -102,6 +102,16 @@
     "heading": "Ką sako mūsų klientai",
     "leaveReview": "Palikti atsiliepimą"
   },
+  "Footer": {
+    "tagline": "Juvelyrika ir antikvariatas",
+    "description": "Šeimos parduotuvė Vilniuje, kurioje kiekvienas papuošalas ir antikvarinis daiktas turi savo istoriją. Tarnaujame klientams nuo 1995 metų.",
+    "colJewellery": "Juvelyrika",
+    "colLinks": "Greitos nuorodos",
+    "colContact": "Kontaktai",
+    "hours": "Darbo laikas",
+    "closed": "Nedirbame",
+    "copyright": "© 2026 Karatas Antik. Visos teisės saugomos."
+  },
   "Header": {
     "tagline": "Juvelyriniai dirbiniai nuo 1995",
     "search": "Paieška",

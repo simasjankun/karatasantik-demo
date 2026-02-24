@@ -6,6 +6,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { hasLocale } from 'next-intl';
 import { routing } from '@/i18n/routing';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import '@/app/globals.css';
 
 const playfair = Playfair_Display({
@@ -54,6 +55,7 @@ export default async function LocaleLayout({
           <Header />
           <div className="h-16 md:h-[148px]" aria-hidden="true" />
           {children}
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
