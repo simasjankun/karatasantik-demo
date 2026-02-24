@@ -64,6 +64,16 @@
     "label": "WHAT ARE YOU LOOKING FOR?",
     "close": "Close"
   },
+  "About": {
+    "label": "OUR STORY",
+    "heading": "A home of jewellery and antiques since 1995",
+    "p1": "Karatas Antik is more than a store. It is a place where every piece of jewellery and every antique has its own story, and our team helps you discover it.",
+    "p2": "Over more than 30 years, we have built a unique collection where handcrafted jewellery meets the world of rare antique pieces.",
+    "stat1": { "number": "30+", "label": "Years of experience" },
+    "stat2": { "number": "1000+", "label": "Happy clients" },
+    "stat3": { "number": "500+", "label": "Unique pieces" },
+    "cta": "Learn more"
+  },
   "Header": {
     "tagline": "Fine jewellery since 1995",
     "search": "Search",

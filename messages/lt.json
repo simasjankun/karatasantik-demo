@@ -64,6 +64,16 @@
     "label": "KO IEŠKOTE?",
     "close": "Uždaryti"
   },
+  "About": {
+    "label": "MŪSŲ ISTORIJA",
+    "heading": "Juvelyrikos ir antikvarinių dirbinių namai nuo 1995 metų",
+    "p1": "Karatas Antik — tai daugiau nei parduotuvė. Tai vieta, kurioje kiekvienas papuošalas ir antikvarinis daiktas turi savo istoriją, o mūsų komanda padeda jums ją atrasti.",
+    "p2": "Per daugiau nei 30 metų sukūrėme unikalią kolekciją, kurioje susitinka rankų darbo juvelyrika ir retų antikvarinių dirbinių pasaulis.",
+    "stat1": { "number": "30+", "label": "Metų patirties" },
+    "stat2": { "number": "1000+", "label": "Laimingų klientų" },
+    "stat3": { "number": "500+", "label": "Unikalių dirbinių" },
+    "cta": "Sužinoti daugiau"
+  },
   "Header": {
     "tagline": "Juvelyriniai dirbiniai nuo 1995",
     "search": "Paieška",
