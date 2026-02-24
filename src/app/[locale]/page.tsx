@@ -5,6 +5,7 @@ import AboutSection from '@/components/AboutSection';
 import FeaturedProducts from '@/components/FeaturedProducts';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import InstagramSection from '@/components/InstagramSection';
+import NewsletterSection from '@/components/NewsletterSection';
 
 export default async function HomePage({
   params,
@@ -22,6 +23,7 @@ export default async function HomePage({
       <FeaturedProducts />
       <TestimonialsSection />
       <InstagramSection />
+      <NewsletterSection />
     </main>
   );
 }

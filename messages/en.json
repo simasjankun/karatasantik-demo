@@ -79,6 +79,18 @@
     "stat3": { "number": "500+", "label": "Unique pieces" },
     "cta": "Learn more"
   },
+  "Newsletter": {
+    "customLabel": "CUSTOM ORDERS",
+    "customHeading": "Your dream jewellery piece",
+    "customText": "Each of us is unique, so if you have a dream piece in mind — write to us. We will do our best to fulfil your wishes at an accessible price.",
+    "customCta": "Contact us",
+    "signupLabel": "NEWSLETTER",
+    "signupHeading": "Receive exclusive offers",
+    "signupText": "Subscribe to our newsletter and be the first to know about new pieces, promotions and exclusive collections.",
+    "placeholder": "Your email address",
+    "submit": "Subscribe",
+    "success": "Thank you! You have subscribed."
+  },
   "Instagram": {
     "label": "INSTAGRAM",
     "heading": "Follow us on Instagram",

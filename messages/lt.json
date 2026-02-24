@@ -79,6 +79,18 @@
     "stat3": { "number": "500+", "label": "Unikalių dirbinių" },
     "cta": "Sužinoti daugiau"
   },
+  "Newsletter": {
+    "customLabel": "INDIVIDUALŪS UŽSAKYMAI",
+    "customHeading": "Jūsų svajonių papuošalas",
+    "customText": "Kiekvienas esame unikalūs, todėl jei turite svajonių dirbinį — parašykite mums. Pasistengime išpildyti visus jūsų norus už prieinamą kainą.",
+    "customCta": "Rašyti mums",
+    "signupLabel": "NAUJIENLAIŠKIS",
+    "signupHeading": "Gaukite išskirtinius pasiūlymus",
+    "signupText": "Prenumeruokite mūsų naujienlaiškį ir pirmieji sužinokite apie naujus dirbinius, akcijas ir išskirtines kolekcijas.",
+    "placeholder": "Jūsų el. paštas",
+    "submit": "Prenumeruoti",
+    "success": "Ačiū! Jūs užsiprenumeravote."
+  },
   "Instagram": {
     "label": "INSTAGRAM",
     "heading": "Sekite mus Instagram",
