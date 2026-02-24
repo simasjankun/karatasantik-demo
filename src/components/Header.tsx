@@ -7,6 +7,7 @@ import { navigation } from '@/data/navigation';
 import { contact } from '@/data/contact';
 import SearchOverlay from './SearchOverlay';
 import AccountSidebar from './AccountSidebar';
+import CartSidebar from './CartSidebar';
 
 // ── SVG Icons — thin, elegant strokes ────────────────────────────────────────
 
@@ -111,6 +112,7 @@ export default function Header() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
   const dropdownTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const tNav = useTranslations('Navigation');
@@ -135,7 +137,7 @@ export default function Header() {
   // Close everything on Escape
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') { setMobileOpen(false); setActiveDropdown(null); setSearchOpen(false); setAccountOpen(false); }
+      if (e.key === 'Escape') { setMobileOpen(false); setActiveDropdown(null); setSearchOpen(false); setAccountOpen(false); setCartOpen(false); }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -266,6 +268,7 @@ export default function Header() {
               {/* Cart */}
               <button
                 aria-label={tHeader('cartLabel')}
+                onClick={() => setCartOpen(true)}
                 className="justify-self-end relative text-white/40 hover:text-gold transition-colors duration-300"
               >
                 <CartIcon />
@@ -316,8 +319,11 @@ export default function Header() {
                 >
                   <UserIcon />
                 </button>
-                <button aria-label={tHeader('cartLabel')}
-                  className="relative text-white/35 hover:text-gold transition-colors duration-300">
+                <button
+                  aria-label={tHeader('cartLabel')}
+                  onClick={() => setCartOpen(true)}
+                  className="relative text-white/35 hover:text-gold transition-colors duration-300"
+                >
                   <CartIcon />
                   <span aria-hidden="true"
                     className="absolute -top-2 -right-2 w-[14px] h-[14px] rounded-full bg-gold text-[#1a1a1a] text-[8.5px] font-bold font-inter flex items-center justify-center leading-none">
@@ -750,6 +756,7 @@ export default function Header() {
       ════════════════════════════════════════════════════════════════ */}
       <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
       <AccountSidebar isOpen={accountOpen} onClose={() => setAccountOpen(false)} />
+      <CartSidebar isOpen={cartOpen} onClose={() => setCartOpen(false)} />
     </>
   );
 }

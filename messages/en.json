@@ -16,6 +16,13 @@
     "sidabriniai_indai": "Silver Tableware",
     "veidroziai_ir_remai": "Mirrors & Frames"
   },
+  "Cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "emptySubtext": "Discover our collection of jewellery and antiques",
+    "startShopping": "Start shopping",
+    "close": "Close"
+  },
   "Account": {
     "title": "My account",
     "signIn": "Sign in",

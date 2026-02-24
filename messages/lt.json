@@ -16,6 +16,13 @@
     "sidabriniai_indai": "Sidabriniai indai ir stalo įrankiai",
     "veidroziai_ir_remai": "Veidrodžiai ir rėmai"
   },
+  "Cart": {
+    "title": "Krepšelis",
+    "empty": "Jūsų krepšelis tuščias",
+    "emptySubtext": "Atraskite mūsų juvelyrikos ir antikvarinių dirbinių kolekciją",
+    "startShopping": "Naršyti kolekciją",
+    "close": "Uždaryti"
+  },
   "Account": {
     "title": "Mano paskyra",
     "signIn": "Prisijungti",
