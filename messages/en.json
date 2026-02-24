@@ -64,6 +64,11 @@
     "label": "WHAT ARE YOU LOOKING FOR?",
     "close": "Close"
   },
+  "Featured": {
+    "label": "LATEST PIECES",
+    "heading": "Exceptional pieces this season",
+    "viewAll": "View all"
+  },
   "About": {
     "label": "OUR STORY",
     "heading": "A home of jewellery and antiques since 1995",

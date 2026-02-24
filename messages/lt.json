@@ -64,6 +64,11 @@
     "label": "KO IEŠKOTE?",
     "close": "Uždaryti"
   },
+  "Featured": {
+    "label": "NAUJAUSI DIRBINIAI",
+    "heading": "Išskirtiniai šio sezono papuošalai",
+    "viewAll": "Peržiūrėti viską"
+  },
   "About": {
     "label": "MŪSŲ ISTORIJA",
     "heading": "Juvelyrikos ir antikvarinių dirbinių namai nuo 1995 metų",
