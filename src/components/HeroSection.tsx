@@ -90,8 +90,9 @@ export default function HeroSection() {
       />
 
       {/* ── Text content ───────────────────────────────────────────────── */}
-      <div className="absolute inset-0 flex flex-col justify-center px-6 lg:pl-[100px] xl:pl-[120px]">
-        <div className="max-w-[540px] mt-[8vh] lg:mt-0">
+      <div className="absolute inset-0 flex flex-col justify-center">
+        <div className="container mx-auto px-6 lg:px-8 xl:px-14">
+          <div className="max-w-[540px] mt-[8vh] lg:mt-0">
 
           {/* Label */}
           <p
@@ -139,6 +140,7 @@ export default function HeroSection() {
             </Link>
           </div>
 
+          </div>
         </div>
       </div>
 
