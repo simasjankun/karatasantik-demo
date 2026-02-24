@@ -79,6 +79,12 @@
     "stat3": { "number": "500+", "label": "Unique pieces" },
     "cta": "Learn more"
   },
+  "Instagram": {
+    "label": "INSTAGRAM",
+    "heading": "Follow us on Instagram",
+    "subtext": "@karatasantik",
+    "cta": "Follow on Instagram"
+  },
   "Testimonials": {
     "label": "TESTIMONIALS",
     "heading": "What our clients say",

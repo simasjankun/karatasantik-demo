@@ -79,6 +79,12 @@
     "stat3": { "number": "500+", "label": "Unikalių dirbinių" },
     "cta": "Sužinoti daugiau"
   },
+  "Instagram": {
+    "label": "INSTAGRAM",
+    "heading": "Sekite mus Instagram",
+    "subtext": "@karatasantik",
+    "cta": "Sekti Instagram"
+  },
   "Testimonials": {
     "label": "ATSILIEPIMAI",
     "heading": "Ką sako mūsų klientai",
