@@ -16,6 +16,17 @@
     "sidabriniai_indai": "Silver Tableware",
     "veidroziai_ir_remai": "Mirrors & Frames"
   },
+  "Account": {
+    "title": "My account",
+    "signIn": "Sign in",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot your password?",
+    "noAccount": "Don't have an account?",
+    "register": "Register",
+    "or": "or",
+    "close": "Close"
+  },
   "Search": {
     "placeholder": "Search...",
     "label": "WHAT ARE YOU LOOKING FOR?",

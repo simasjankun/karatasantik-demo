@@ -16,6 +16,17 @@
     "sidabriniai_indai": "Sidabriniai indai ir stalo įrankiai",
     "veidroziai_ir_remai": "Veidrodžiai ir rėmai"
   },
+  "Account": {
+    "title": "Mano paskyra",
+    "signIn": "Prisijungti",
+    "email": "El. paštas",
+    "password": "Slaptažodis",
+    "forgotPassword": "Pamiršote slaptažodį?",
+    "noAccount": "Dar neturite paskyros?",
+    "register": "Registruotis",
+    "or": "arba",
+    "close": "Uždaryti"
+  },
   "Search": {
     "placeholder": "Ieškoti...",
     "label": "KO IEŠKOTE?",

@@ -6,6 +6,7 @@ import { Link, useRouter, usePathname } from '@/i18n/navigation';
 import { navigation } from '@/data/navigation';
 import { contact } from '@/data/contact';
 import SearchOverlay from './SearchOverlay';
+import AccountSidebar from './AccountSidebar';
 
 // ── SVG Icons — thin, elegant strokes ────────────────────────────────────────
 
@@ -109,6 +110,7 @@ export default function Header() {
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [accountOpen, setAccountOpen] = useState(false);
   const dropdownTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const tNav = useTranslations('Navigation');
@@ -133,7 +135,7 @@ export default function Header() {
   // Close everything on Escape
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') { setMobileOpen(false); setActiveDropdown(null); setSearchOpen(false); }
+      if (e.key === 'Escape') { setMobileOpen(false); setActiveDropdown(null); setSearchOpen(false); setAccountOpen(false); }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -307,8 +309,11 @@ export default function Header() {
                 >
                   <SearchIcon />
                 </button>
-                <button aria-label={tHeader('account')}
-                  className="text-white/35 hover:text-gold transition-colors duration-300">
+                <button
+                  aria-label={tHeader('account')}
+                  onClick={() => setAccountOpen(true)}
+                  className="text-white/35 hover:text-gold transition-colors duration-300"
+                >
                   <UserIcon />
                 </button>
                 <button aria-label={tHeader('cartLabel')}
@@ -700,6 +705,7 @@ export default function Header() {
             </button>
             <button
               aria-label={tHeader('account')}
+              onClick={() => { setMobileOpen(false); setAccountOpen(true); }}
               className="text-gold/50 hover:text-gold transition-colors duration-300 p-1"
             >
               <UserIcon />
@@ -743,6 +749,7 @@ export default function Header() {
           SEARCH OVERLAY
       ════════════════════════════════════════════════════════════════ */}
       <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
+      <AccountSidebar isOpen={accountOpen} onClose={() => setAccountOpen(false)} />
     </>
   );
 }
