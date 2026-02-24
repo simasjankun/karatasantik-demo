@@ -16,6 +16,11 @@
     "sidabriniai_indai": "Silver Tableware",
     "veidroziai_ir_remai": "Mirrors & Frames"
   },
+  "Search": {
+    "placeholder": "Search...",
+    "label": "WHAT ARE YOU LOOKING FOR?",
+    "close": "Close"
+  },
   "Header": {
     "tagline": "Fine jewellery since 1995",
     "search": "Search",

@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Link, useRouter, usePathname } from '@/i18n/navigation';
 import { navigation } from '@/data/navigation';
 import { contact } from '@/data/contact';
+import SearchOverlay from './SearchOverlay';
 
 // ── SVG Icons — thin, elegant strokes ────────────────────────────────────────
 
@@ -107,6 +108,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
   const dropdownTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const tNav = useTranslations('Navigation');
@@ -131,7 +133,7 @@ export default function Header() {
   // Close everything on Escape
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') { setMobileOpen(false); setActiveDropdown(null); }
+      if (e.key === 'Escape') { setMobileOpen(false); setActiveDropdown(null); setSearchOpen(false); }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -298,8 +300,11 @@ export default function Header() {
 
               {/* Icons */}
               <div className="flex items-center gap-7" role="toolbar" aria-label={tHeader('actionsToolbar')}>
-                <button aria-label={tHeader('search')}
-                  className="text-white/35 hover:text-gold transition-colors duration-300">
+                <button
+                  aria-label={tHeader('search')}
+                  onClick={() => setSearchOpen(true)}
+                  className="text-white/35 hover:text-gold transition-colors duration-300"
+                >
                   <SearchIcon />
                 </button>
                 <button aria-label={tHeader('account')}
@@ -688,6 +693,7 @@ export default function Header() {
           <div className="flex items-center justify-around">
             <button
               aria-label={tHeader('search')}
+              onClick={() => { setMobileOpen(false); setSearchOpen(true); }}
               className="text-gold/50 hover:text-gold transition-colors duration-300 p-1"
             >
               <SearchIcon />
@@ -732,6 +738,11 @@ export default function Header() {
 
         </div>
       </div>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          SEARCH OVERLAY
+      ════════════════════════════════════════════════════════════════ */}
+      <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }

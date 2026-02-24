@@ -16,6 +16,11 @@
     "sidabriniai_indai": "Sidabriniai indai ir stalo įrankiai",
     "veidroziai_ir_remai": "Veidrodžiai ir rėmai"
   },
+  "Search": {
+    "placeholder": "Ieškoti...",
+    "label": "KO IEŠKOTE?",
+    "close": "Uždaryti"
+  },
   "Header": {
     "tagline": "Juvelyriniai dirbiniai nuo 1995",
     "search": "Paieška",
