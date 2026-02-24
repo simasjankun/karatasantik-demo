@@ -16,6 +16,14 @@
     "sidabriniai_indai": "Silver Tableware",
     "veidroziai_ir_remai": "Mirrors & Frames"
   },
+  "Hero": {
+    "label": "Jewellery & Antiques",
+    "heading": "Exceptional jewellery since 1995",
+    "subtext": "Discover our collection of handcrafted jewellery and antique pieces",
+    "primary": "Browse collection",
+    "secondary": "About us",
+    "scroll": "Scroll"
+  },
   "Cart": {
     "title": "Cart",
     "empty": "Your cart is empty",

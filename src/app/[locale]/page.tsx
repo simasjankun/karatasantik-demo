@@ -1,4 +1,5 @@
 import { setRequestLocale } from 'next-intl/server';
+import HeroSection from '@/components/HeroSection';
 
 export default async function HomePage({
   params,
@@ -9,10 +10,8 @@ export default async function HomePage({
   setRequestLocale(locale);
 
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <p className="font-playfair text-gold/40 tracking-[0.3em] text-sm uppercase">
-        Homepage coming soon
-      </p>
+    <main>
+      <HeroSection />
     </main>
   );
 }

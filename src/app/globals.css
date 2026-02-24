@@ -78,6 +78,24 @@ body {
   to   { opacity: 0; }
 }
 
+/* ── Hero section entrance ────────────────────────────────────────────────── */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Scroll indicator bounce ──────────────────────────────────────────────── */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
 /* ── Search overlay entrance ──────────────────────────────────────────────── */
 @keyframes searchOverlayFadeIn {
   from { opacity: 0; }
