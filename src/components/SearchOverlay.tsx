@@ -58,7 +58,7 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
       // Focus trap: Tab cycles between input ↔ close button
       if (e.key === 'Tab') {
         const focusable = [inputRef.current, closeButtonRef.current].filter(
-          (el): el is HTMLElement => el !== null
+          (el): el is HTMLInputElement | HTMLButtonElement => el !== null
         );
         if (focusable.length < 2) return;
 
